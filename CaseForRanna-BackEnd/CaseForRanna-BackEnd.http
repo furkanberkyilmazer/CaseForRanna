@@ -1,0 +1,6 @@
+@CaseForRanna_BackEnd_HostAddress = http://localhost:5112
+
+GET {{CaseForRanna_BackEnd_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
