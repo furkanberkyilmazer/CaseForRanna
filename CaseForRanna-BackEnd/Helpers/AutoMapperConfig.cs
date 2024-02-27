@@ -10,6 +10,7 @@ namespace CaseForRanna_BackEnd.Helpers
         {
             CreateMap<User, CreateUserDto>();
             CreateMap<User, CreateUserDto>().ReverseMap();
+            CreateMap<Form, CreateFormDto>().ReverseMap();
         }
     }
 }

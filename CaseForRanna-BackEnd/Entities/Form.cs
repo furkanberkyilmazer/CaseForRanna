@@ -10,7 +10,7 @@ namespace CaseForRanna_BackEnd.Entities
         public DateTime Date { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
-        public FormCaseEnum State { get; set; }
+        public FormCaseEnum State { get; set; } = FormCaseEnum.NotActionTaken;
 
 
     }

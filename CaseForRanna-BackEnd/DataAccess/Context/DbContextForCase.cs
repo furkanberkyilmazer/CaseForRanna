@@ -10,6 +10,16 @@ namespace CaseForRanna_BackEnd.DataAccess.Context
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<Form> Forms { get; set; }
 
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<UserRole>().HasData(
+                new UserRole { Id = 1, Name = "Manager" },
+                new UserRole { Id = 2, Name = "Customer" }
+            );
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

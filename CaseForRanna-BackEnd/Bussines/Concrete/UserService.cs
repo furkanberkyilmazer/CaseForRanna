@@ -19,5 +19,15 @@ namespace CaseForRanna_BackEnd.Bussines.Concrete
         {
             return await _userDal.GetByRoleIdAsync(RoleId);
         }
+
+        public async Task<User> GetByUserNameAsync(string UserName)
+        {
+           return await _userDal.GetByUserNameAsync(UserName);
+        }
+
+        public async Task<User> LoginAsync(string UserName, string Password)
+        {
+            return await _userDal.LoginAsync(UserName,Password);
+        }
     }
 }
