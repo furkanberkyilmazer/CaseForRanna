@@ -9,5 +9,6 @@ namespace CaseForRanna_BackEnd.DataAccess.Abstract
         Task<User> GetByUserNameAsync(string UserName);
 
         Task<User> LoginAsync(string UserName, string Password);
+
     }
 }

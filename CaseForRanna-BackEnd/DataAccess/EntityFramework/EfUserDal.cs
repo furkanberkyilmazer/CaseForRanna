@@ -15,6 +15,7 @@ namespace CaseForRanna_BackEnd.DataAccess.EntityFramework
             _db = dbContextForCase;
         }
 
+   
         public async Task<List<User>> GetByRoleIdAsync(int RoleId)
         {
           return  await  _db.Users.Where(x=>x.UserRoleId==RoleId).ToListAsync();

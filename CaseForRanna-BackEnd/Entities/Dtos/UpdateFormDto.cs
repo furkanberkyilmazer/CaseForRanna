@@ -1,16 +1,12 @@
-﻿namespace CaseForRanna_BackEnd.Entities.Dtos
+﻿using CaseForRanna_BackEnd.Entities.Enums;
+
+namespace CaseForRanna_BackEnd.Entities.Dtos
 {
     public class UpdateFormDto
     {
         public int Id { get; set; }
-
-        public string Name { get; set; }
-        public string Surname { get; set; }
-
-        public string Username { get; set; }
-
-        public string Password { get; set; }
-
-        public string Email { get; set; }
+        public string Subject { get; set; }
+        public string Content { get; set; }
+        public FormCaseEnum State { get; set; }
     }
 }

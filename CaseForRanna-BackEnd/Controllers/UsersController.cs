@@ -45,7 +45,7 @@ namespace CaseForRanna_BackEnd.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> SaveCustomers(CreateUserDto userDto)
+        public async Task<IActionResult> SaveCustomer(CreateUserDto userDto)
         {
             User user = _mapper.Map<User>(userDto);
             user.UserRoleId = 2;
@@ -76,7 +76,11 @@ namespace CaseForRanna_BackEnd.Controllers
         public async Task<IActionResult> UpdateManager(UpdateUserDto userDto)
         {
             User user = await _userService.GetByIdAsync(userDto.Id);
-            user = _mapper.Map<User>(userDto);
+            user.Name = userDto.Name;
+            user.Email = userDto.Email;
+            user.Surname = userDto.Surname;
+            user.Username  = userDto.Username;
+            
 
             await _userService.UpdateAsync(user);
             return Ok(_mapper.Map<UpdateUserDto>(user));
@@ -87,7 +91,10 @@ namespace CaseForRanna_BackEnd.Controllers
         public async Task<IActionResult> UpdateCustomer(UpdateUserDto userDto)
         {
             User user = await _userService.GetByIdAsync(userDto.Id);
-            user = _mapper.Map<User>(userDto);
+            user.Name = userDto.Name;
+            user.Email = userDto.Email;
+            user.Surname = userDto.Surname;
+            user.Username = userDto.Username;
 
             await _userService.UpdateAsync(user);
             return Ok(_mapper.Map<UpdateUserDto>(user));

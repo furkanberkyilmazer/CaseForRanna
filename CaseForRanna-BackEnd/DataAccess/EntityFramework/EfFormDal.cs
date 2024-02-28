@@ -19,5 +19,14 @@ namespace CaseForRanna_BackEnd.DataAccess.EntityFramework
         {
             return await _db.Forms.Where(x => x.User.Username == UserName).ToListAsync();
         }
+        public async Task<Form> GetByIdWithUserAsync(int Id)
+        {
+            return await _db.Forms.Include(x => x.User).Where(a =>a.Id== Id).FirstOrDefaultAsync();
+        }
+
+        public async Task<List<Form>> GetAllWithUserAsync()
+        {
+            return await _db.Forms.Include(x => x.User).ToListAsync();
+        }
     }
 }

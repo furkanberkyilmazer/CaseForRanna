@@ -29,7 +29,8 @@ namespace CaseForRanna_BackEnd.Controllers
         [HttpGet("[action]")]
         public async Task<IActionResult> AllForms()
         {
-            return Ok(await _formService.GetAllAsync());
+            
+            return Ok(await _formService.GetAllWithUserAsync());
         }
     
         [HttpPost("[action]")]
@@ -43,12 +44,14 @@ namespace CaseForRanna_BackEnd.Controllers
             return Ok(_mapper.Map<CreateFormDto>(form));
         }
         [HttpPut("[action]")]
-        public async Task<IActionResult> UpdateForm(UpdateUserDto formDto)
+        public async Task<IActionResult> UpdateForm(UpdateFormDto formDto)
         {
-            Form form =await _formService.GetByIdAsync(formDto.Id);
-             form = _mapper.Map<Form>(formDto);
+            Form form =await _formService.GetByIdWithUserAsync(formDto.Id);       
+            form.Content = formDto.Content;
+            form.State = formDto.State;
+            form.Subject = formDto.Subject;
             await _formService.UpdateAsync(form);
-            return Ok(_mapper.Map<UpdateUserDto>(form));
+            return Ok(_mapper.Map <UpdateFormDto>(form));
         }
       
 
@@ -67,7 +70,8 @@ namespace CaseForRanna_BackEnd.Controllers
         [HttpGet("[action]")]
         public  async Task<IActionResult> GetByUsernameForms(string username)
         {
-            return Ok(await _formService.GetByUserNameAsync(username));
+            List<Form> forms = await _formService.GetByUserNameAsync(username);
+            return Ok(forms);
         }
 
     }
