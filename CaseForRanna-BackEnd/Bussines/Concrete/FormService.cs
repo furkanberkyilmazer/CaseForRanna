@@ -15,5 +15,10 @@ namespace CaseForRanna_BackEnd.Bussines.Concrete
             _formDal = formDal;
             _unitofWork = unitofWork;
         }
+
+        public async Task<List<Form>> GetByUserNameAsync(string UserName)
+        {
+            return await _formDal.GetByUserNameAsync(UserName);
+        }
     }
 }

@@ -37,6 +37,8 @@ namespace CaseForRanna_BackEnd.Controllers
         {
             Form form = _mapper.Map<Form>(formDto);
             var user = await _userService.GetByUserNameAsync(formDto.Username);
+            form.User = user;
+            form.UserId=user.Id;
             await _formService.AddAsync(form);
             return Ok(_mapper.Map<CreateFormDto>(form));
         }
@@ -62,5 +64,11 @@ namespace CaseForRanna_BackEnd.Controllers
              await _formService.RemoveAsync(form);
             return Ok("İşlem başarılı.");
         }
+        [HttpGet("[action]")]
+        public  async Task<IActionResult> GetByUsernameForms(string username)
+        {
+            return Ok(await _formService.GetByUserNameAsync(username));
+        }
+
     }
 }

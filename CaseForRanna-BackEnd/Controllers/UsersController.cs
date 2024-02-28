@@ -133,8 +133,11 @@ namespace CaseForRanna_BackEnd.Controllers
 
             var claims = new[]
             {
-        new Claim(ClaimTypes.Name,user.Username),
-        new Claim(ClaimTypes.Role,user.UserRole.Name)
+        //new Claim(ClaimTypes.Name,user.Username),
+         new Claim(type:"username",user.Username),
+      //  new Claim(ClaimTypes.Role,user.UserRole.Name),
+      new Claim(type:"role",user.UserRole.Name),
+        new Claim(type:"name",user.Name),
     };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["AppSettings:JwtKey"]));
